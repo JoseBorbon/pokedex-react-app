@@ -1,15 +1,10 @@
-const fancifyImage = (id = 151) => {
-  strId = id.toString();
+const applyFancyImage = (id = 151) => {
   let url = 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/';
-  let remainderUrl = '.png';
-  if (strId.length === 1) {
-    url += '00' + id + remainderUrl;
-  } else if (strId.length === 2) {
-    url += '0' + id + remainderUrl;
-  } else {
-    url += id + remainderUrl;
-  }
+  const urlExtension = '.png';
+  url += id < 999 ? `00${id}`.slice(-3) : id;
+  url += urlExtension;
+
   return url;
 };
 
-console.log(fancifyImage());
+export default applyFancyImage;
