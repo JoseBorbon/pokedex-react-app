@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import './Pokecard.css';
+import fancifyImage from './utilities/fancifyImage';
 
 class Pokecard extends Component {
   render() {
     const { id, name, type, exp } = this.props;
-    let imgSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+    let imgSrc = fancifyImage(id);
     return (
       <div className="Pokecard">
-        <h1>{name}</h1>
-        <img src={imgSrc} alt={name} />
-        <div>Type: {type}</div>
-        <div>EXP: {exp}</div>
+        <h1 className="Pokecard-title">{name}</h1>
+        <div className="Pokecard-image">
+          <img src={imgSrc} alt={name} />
+        </div>
+        <div className="Pokecard-data">Type: {type}</div>
+        <div className="Pokecard-data">EXP: {exp}</div>
       </div>
     );
   }
